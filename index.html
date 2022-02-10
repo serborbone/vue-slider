@@ -9,7 +9,7 @@
 </head>
 <body>
    <div class="container" id="app">
-        <div class="items">
+        <div class="items" @mouseover="stopSlideImage">
 
             <div class="item">
                 <img v-bind:src='items[active].url'>

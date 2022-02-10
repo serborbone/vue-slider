@@ -34,6 +34,7 @@ const app = new Vue(
             ],
             
             active: 0,
+            interval: "",
         },
         methods: {
 
@@ -65,18 +66,24 @@ const app = new Vue(
 
             },
 
-            showImage() {
+            slideImage() {
 
               //definisco che la funzione nextBtn venga chiamata ogni 3 secondi
-              setInterval(this.nextBtn, 3000);
+              this.interval= setInterval(this.nextBtn, 3000);
 
-            }
+            },
+
+            stopSlideImage() {
+                
+                //eseguo clearInterval quando vado in hover sull'elemento con la classe .items
+                clearInterval(this.interval);
+            },
 
         },
 
         //chiama la funzione che cambia le immagini ogni 3 secondi
         beforeMount() {
-          this.showImage();
+            this.slideImage();
         }
 
 
