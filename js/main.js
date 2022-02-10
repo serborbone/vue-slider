@@ -2,74 +2,85 @@
 const app = new Vue(
     {
     
-      el: '#app',
-      data: {
-          items: [
-          
-              {
-                  url:'img/01.jpg',
-                  name:'Svezia',
-                  text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
-              },
-              {
-                  url:'img/02.jpg',
-                  name:'Svizzera',
-                  text:'Lorem ipsum'
-              },
-              {
-                  url:'img/03.jpg',
-                  name:'Gran Bretagna',
-                  text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
-              },
-              {
-                  url:'img/04.jpg',
-                  name:'Germania',
-                  text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
-              },
-              {
-                  url:'img/05.jpg',
-                  name:'Paradise',
-                  text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
-              }
-          ],
-          
-          active: 0,
-      },
-      methods: {
-
-        
-        prevBtn() {
-
-            //se active è 0
-            if (this.active == 0) {
-
-              //facendo click su prev torno all'ultima img dell'array
-              this.active = this.items.length - 1;
-
-            } else {
-              this.active--;
-            }
-        },
-
-        nextBtn() {
-
-            //se active corrisponde alla posizione dell'ultimo oggetto dell'array
-            if (this.active == this.items.length - 1) {
-
-              //facendo click su next active torna 0 e visualizza la prima img
-              this.active = 0;
+        el: '#app',
+        data: {
+            items: [
             
-            } else {
-              this.active++;
-            }
+                {
+                    url:'img/01.jpg',
+                    name:'Svezia',
+                    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.'
+                },
+                {
+                    url:'img/02.jpg',
+                    name:'Svizzera',
+                    text:'Lorem ipsum'
+                },
+                {
+                    url:'img/03.jpg',
+                    name:'Gran Bretagna',
+                    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+                },
+                {
+                    url:'img/04.jpg',
+                    name:'Germania',
+                    text: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
+                },
+                {
+                    url:'img/05.jpg',
+                    name:'Paradise',
+                    text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam,'
+                }
+            ],
+            
+            active: 0,
         },
-     
-      }
+        methods: {
+
+          
+            prevBtn() {
+
+                //se active è 0
+                if (this.active == 0) {
+
+                  //facendo click su prev torno all'ultima img dell'array
+                  this.active = this.items.length - 1;
+
+                } else {
+                  this.active--;
+                }
+            },
+
+            nextBtn() {
+
+                //se active corrisponde alla posizione dell'ultimo oggetto dell'array
+                if (this.active == this.items.length - 1) {
+
+                  //facendo click su next active torna 0 e visualizza la prima img
+                  this.active = 0;
+                
+                } else {
+                  this.active++;
+                }
+
+            },
+
+            showImage() {
+
+              //definisco che la funzione nextBtn venga chiamata ogni 3 secondi
+              setInterval(this.nextBtn, 3000);
+
+            }
+
+        },
+
+        //chiama la funzione che cambia le immagini ogni 3 secondi
+        beforeMount() {
+          this.showImage();
+        }
+
 
     },
-
-  
-
 )
 /*
 
